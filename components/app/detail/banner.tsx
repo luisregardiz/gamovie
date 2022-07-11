@@ -1,17 +1,20 @@
-import { FC, useState } from "react";
-import Image from "next/image";
-import { MovieDetail } from "../../../types/movie";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
-import { getColorVote } from "../../../utils/getColorVote";
-import { nFormatter } from "../../../utils/nFormatter";
-import GamovieLogo from "../../../public/assets/images/Gamovie.png";
-import { TVDetail } from "../../../types/tv";
+import { FC, useState } from 'react';
+import Image from 'next/image';
+import { MovieDetail } from '../../../types/movie';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import { getColorVote } from '../../../utils/getColorVote';
+import { nFormatter } from '../../../utils/nFormatter';
+import GamovieLogo from '../../../public/assets/images/Gamovie.png';
+import { TVDetail } from '../../../types/tv';
+import { ChevronLeftIcon } from '@heroicons/react/outline';
+import { useRouter } from 'next/router';
 
 interface BannerProps {
     media: TVDetail | MovieDetail;
 }
 
 const Banner: FC<BannerProps> = ({ media }) => {
+    const router = useRouter();
     const [imageError, setImageError] = useState(false);
     const votePercentage = media?.vote_average * 10;
     return (
@@ -38,11 +41,11 @@ const Banner: FC<BannerProps> = ({ media }) => {
                         background
                         backgroundPadding={6}
                         styles={buildStyles({
-                            backgroundColor: "#131313",
-                            textColor: "#fff",
-                            textSize: "1.7rem",
+                            backgroundColor: '#131313',
+                            textColor: '#fff',
+                            textSize: '1.7rem',
                             pathColor: getColorVote(media.vote_average),
-                            trailColor: "transparent",
+                            trailColor: 'transparent',
                         })}
                         className="w-8 font-bold"
                     />
@@ -67,6 +70,14 @@ const Banner: FC<BannerProps> = ({ media }) => {
                         />
                     </div>
                 )}
+                <div className="m-5">
+                    <button
+                        onClick={() => router.back(-1)}
+                        className="p-4 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-full"
+                    >
+                        <ChevronLeftIcon className="text-gray-50 h-5 w-5" />
+                    </button>
+                </div>
             </div>
         </div>
     );

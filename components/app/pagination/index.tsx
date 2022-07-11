@@ -1,5 +1,5 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
-import { Dispatch, FC, SetStateAction, useEffect } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+import { Dispatch, FC, SetStateAction, useEffect } from 'react';
 
 interface PaginationProps {
     page: number;
@@ -19,8 +19,8 @@ const Pagination: FC<PaginationProps> = ({ page, setPage }) => {
                 disabled={page <= 1 ? true : false}
                 className={`${
                     page <= 1
-                        ? "opacity-50 cursor-not-allowed"
-                        : "cursor-pointer"
+                        ? 'opacity-50 cursor-not-allowed'
+                        : 'cursor-pointer'
                 }`}
             >
                 <ChevronLeftIcon className="w-5 text-gray-500" />
