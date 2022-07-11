@@ -72,7 +72,7 @@ const Banner: FC<BannerProps> = ({ media }) => {
                 )}
                 <div className="m-5">
                     <button
-                        onClick={() => router.back(-1)}
+                        onClick={() => router.back()}
                         className="p-4 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-full"
                     >
                         <ChevronLeftIcon className="text-gray-50 h-5 w-5" />
