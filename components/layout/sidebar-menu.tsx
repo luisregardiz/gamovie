@@ -178,7 +178,7 @@ const SideMenu: FC<SideMenuProps> = () => {
                     </div>
                     <div>
                         <button
-                            className="flex items-center py-2 px-4 my-5 bg-gray-900 text-gray-200 rounded-lg font-bold text-sm hover:bg-gray-700 shadow-lg"
+                            className="flex items-center py-2 px-4 my-5 bg-dark-300 text-gray-200 rounded-lg font-bold text-sm hover:bg-dark-400 shadow-lg"
                             onClick={handleLogout}
                         >
                             Logout <LogoutIcon className="w-5 ml-2" />
