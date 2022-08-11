@@ -85,7 +85,10 @@ const Navbar: FC<NavbarProps> = () => {
                                         <UserIcon className="h-6 w-6 text-gray-200" />
                                     </a>
                                 </Link>
-                                <button className="bg-dark-400 p-2 rounded-lg">
+                                <button
+                                    onClick={handleLogout}
+                                    className="bg-dark-400 p-2 rounded-lg"
+                                >
                                     <LogoutIcon className="h-6 w-6 text-gray-200" />
                                 </button>
                             </div>
