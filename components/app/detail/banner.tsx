@@ -22,7 +22,7 @@ const Banner: FC<BannerProps> = ({ media }) => {
         ? GamovieLogo
         : `${process.env.NEXT_PUBLIC_IMAGE_ORIGINAL_URL}${media?.backdrop_path}`;
     return (
-        <div className="relative flex h-60 ">
+        <div className="relative flex h-60 shadow-lg">
             <Image
                 src={srcBannerImage}
                 alt={media.id.toString()}

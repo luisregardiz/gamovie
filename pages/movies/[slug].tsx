@@ -14,6 +14,7 @@ import React from 'react';
 import Recommendations from '../../components/app/detail/recomendations';
 import SimilarContent from '../../components/app/detail/similars';
 import DetailLoader from '../../components/loaders/detail';
+import { url } from 'inspector';
 interface MovieProps {}
 
 const Movie: NextPage<MovieProps> = () => {
@@ -31,25 +32,41 @@ const Movie: NextPage<MovieProps> = () => {
     if (!movie) return <DetailLoader />;
     if (error) return <p>Error: {error.message}</p>;
 
+    const srcBannerImage = `${process.env.NEXT_PUBLIC_IMAGE_ORIGINAL_URL}${movie?.backdrop_path}`;
+    console.log(srcBannerImage);
+
     return (
-        <section className="min-h-screen bg-dark-100 px-2">
-            <Head>
-                <title>{movie.title} - Gamovie</title>
-                <meta name="Gamovie" content="Movie app" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+        <div
+            style={{
+                backgroundImage: ` url(${srcBannerImage})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+            }}
+            className="min-h-screen "
+        >
+            <div
+                style={{ backdropFilter: 'blur(16px)' }}
+                className="bg-dark-100 bg-opacity-90 "
+            >
+                <Head>
+                    <title>{movie.title} - Gamovie</title>
+                    <meta name="Gamovie" content="Movie app" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
 
-            <Banner media={movie!} />
-            <MovieInfo movie={movie!} id={getId!} />
-            <div className="flex md:flex-row flex-col items-center justify-between bg-dark-200 p-5 rounded-lg shadow-lg gap-5 md:w-3/4 w-4/5 mx-auto ">
-                <Cast id={getId!} media_type="movie" />
-                <AditionalInfo movie={movie!} />
+                <Banner media={movie!} />
+                <MovieInfo movie={movie!} id={getId!} />
+                <div className="flex md:flex-row flex-col items-center justify-between bg-dark-200 p-5 rounded-lg shadow-lg gap-5 md:w-3/4 w-4/5 mx-auto ">
+                    <Cast id={getId!} media_type="movie" />
+                    <AditionalInfo movie={movie!} />
+                </div>
+
+                <YoutubeEmbed id={getId!} media_type="movie" />
+                <SimilarContent id={getId!} media_type="movie" />
+                <Recommendations id={getId!} media_type="movie" />
             </div>
-
-            <YoutubeEmbed id={getId!} media_type="movie" />
-            <SimilarContent id={getId!} media_type="movie" />
-            <Recommendations id={getId!} media_type="movie" />
-        </section>
+        </div>
     );
 };
 

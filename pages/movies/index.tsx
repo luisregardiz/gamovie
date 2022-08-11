@@ -46,7 +46,7 @@ const Movies: NextPage<MoviesProps> = () => {
                 <meta name="Gamovie" content="Movie app" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <h1 className="text-4xl font-black pb-4 text-gray-400">
+            <h1 className="lg:text-4xl text-2xl font-black pb-4 text-gray-400">
                 Popular Movies
             </h1>
             <div className="flex items-center justify-between">
