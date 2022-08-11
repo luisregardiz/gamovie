@@ -4,9 +4,9 @@ import Head from 'next/head';
 import useSWR from 'swr';
 import fetcher from '../../../utils/fetcher';
 import MediaList from '../../../components/app/list';
-interface MovieCategoryProps {}
+interface TVShowCategoryProps {}
 
-const MovieCategory: NextPage<MovieCategoryProps> = () => {
+const TVShowCategory: NextPage<TVShowCategoryProps> = () => {
     const router = useRouter();
     const { category } = router.query;
     const categoryId = typeof category === 'string' && category?.split('-')[1];
@@ -15,7 +15,7 @@ const MovieCategory: NextPage<MovieCategoryProps> = () => {
 
     const { data: movies, error } = useSWR(
         `
-           ${process.env.NEXT_PUBLIC_API_URL}/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${categoryId}&with_watch_monetization_types=flatrate`,
+           ${process.env.NEXT_PUBLIC_API_URL}/discover/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${categoryId}&with_watch_monetization_types=flatrate`,
         fetcher
     );
 
@@ -30,7 +30,7 @@ const MovieCategory: NextPage<MovieCategoryProps> = () => {
                 Results: {categoryName}
             </h2>
             <h4 className="text-lg font-bold text-gray-200 capitalize">
-                Movies
+                TV Shows
             </h4>
             <div>
                 {error && <p>Error: {error.message}</p>}
@@ -40,4 +40,4 @@ const MovieCategory: NextPage<MovieCategoryProps> = () => {
     );
 };
 
-export default MovieCategory;
+export default TVShowCategory;

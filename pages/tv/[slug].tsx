@@ -28,25 +28,39 @@ const TVShow: NextPage<TVShowProps> = () => {
     );
     if (!tv) return <DetailLoader />;
     if (error) return <p>Error: {error.message}</p>;
+    const srcBannerImage = `${process.env.NEXT_PUBLIC_IMAGE_ORIGINAL_URL}${tv?.backdrop_path}`;
 
     return (
-        <section className="min-h-screen bg-dark-100 px-2">
-            <Head>
-                <title>{tv.name} - Gamovie</title>
-                <meta name="Gamovie" content="Movie app" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Banner media={tv!} />
-            <TVInfo id={getId!} tv={tv!} />
-            <div className="flex md:flex-row flex-col items-center justify-between bg-dark-200 p-5 rounded-lg shadow-lg gap-5 md:w-3/4 w-4/5 mx-auto  ">
-                <Cast id={getId!} media_type="tv" />
-                <AditionalInfoTV tv={tv!} />
+        <div
+            style={{
+                backgroundImage: ` url(${srcBannerImage})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+            }}
+            className="min-h-screen"
+        >
+            <div
+                style={{ backdropFilter: 'blur(16px)' }}
+                className="bg-dark-100 bg-opacity-90 "
+            >
+                <Head>
+                    <title>{tv.name} - Gamovie</title>
+                    <meta name="Gamovie" content="Movie app" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <Banner media={tv!} />
+                <TVInfo id={getId!} tv={tv!} />
+                <div className="flex md:flex-row flex-col items-center justify-between bg-dark-200 p-5 rounded-lg shadow-lg gap-5 md:w-3/4 w-4/5 mx-auto  ">
+                    <Cast id={getId!} media_type="tv" />
+                    <AditionalInfoTV tv={tv!} />
+                </div>
+                <SeasonList tv={tv!} />
+                <YoutubeEmbed id={getId!} media_type="tv" />
+                <SimilarContent id={getId!} media_type="tv" />
+                <Recommendations id={getId!} media_type="tv" />
             </div>
-            <SeasonList tv={tv!} />
-            <YoutubeEmbed id={getId!} media_type="tv" />
-            <SimilarContent id={getId!} media_type="tv" />
-            <Recommendations id={getId!} media_type="tv" />
-        </section>
+        </div>
     );
 };
 
