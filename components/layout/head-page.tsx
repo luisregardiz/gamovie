@@ -12,7 +12,7 @@ const HeadPage: FC<HeadPageProps> = ({ title }) => {
             <meta name="Gamovie" content="Movie app" />
             <meta
                 name="google-site-verification"
-                content="googlef39040b68b993f87.html"
+                content="dums6P0g3MMMf-QQus8JeFq_dywVMjjK5UO9DD17--M"
             />
             <link rel="icon" href="/favicon.ico" />
         </Head>
