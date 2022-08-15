@@ -9,6 +9,7 @@ import { discoverUrl } from '../../utils/discoverUrl';
 import Head from 'next/head';
 import fetcher from '../../utils/fetcher';
 import ListLoader from '../../components/loaders/list';
+import HeadPage from '../../components/layout/head-page';
 
 interface PopularTVProps {}
 
@@ -31,11 +32,7 @@ const PopularTV: NextPage<PopularTVProps> = () => {
 
     return (
         <section className="section">
-            <Head>
-                <title>Popular TV Shows - Gamovie</title>
-                <meta name="Gamovie" content="Movie app" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <HeadPage title="Popular TV Shows" />
             <h1 className="lg:text-4xl text-2xl font-black pb-4 text-gray-400">
                 Popular TV Shows
             </h1>

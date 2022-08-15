@@ -15,6 +15,7 @@ import Recommendations from '../../components/app/detail/recomendations';
 import SimilarContent from '../../components/app/detail/similars';
 import DetailLoader from '../../components/loaders/detail';
 import { url } from 'inspector';
+import HeadPage from '../../components/layout/head-page';
 interface MovieProps {}
 
 const Movie: NextPage<MovieProps> = () => {
@@ -33,7 +34,6 @@ const Movie: NextPage<MovieProps> = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     const srcBannerImage = `${process.env.NEXT_PUBLIC_IMAGE_ORIGINAL_URL}${movie?.backdrop_path}`;
-    console.log(srcBannerImage);
 
     return (
         <div
@@ -49,11 +49,7 @@ const Movie: NextPage<MovieProps> = () => {
                 style={{ backdropFilter: 'blur(16px)' }}
                 className="bg-dark-100 bg-opacity-90 "
             >
-                <Head>
-                    <title>{movie.title} - Gamovie</title>
-                    <meta name="Gamovie" content="Movie app" />
-                    <link rel="icon" href="/favicon.ico" />
-                </Head>
+                <HeadPage title={movie.title} />
 
                 <Banner media={movie!} />
                 <MovieInfo movie={movie!} id={getId!} />

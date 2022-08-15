@@ -9,6 +9,7 @@ import FilterMedia from '../../components/app/filter';
 import { Filter, MediaData } from '../../types/movie';
 import { discoverUrl } from '../../utils/discoverUrl';
 import ListLoader from '../../components/loaders/list';
+import HeadPage from '../../components/layout/head-page';
 
 interface MoviesProps {}
 
@@ -41,11 +42,7 @@ const Movies: NextPage<MoviesProps> = () => {
 
     return (
         <section className="section">
-            <Head>
-                <title>Popular Movies - Gamovie</title>
-                <meta name="Gamovie" content="Movie app" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <HeadPage title="Popular Movies" />
             <h1 className="lg:text-4xl text-2xl font-black pb-4 text-gray-400">
                 Popular Movies
             </h1>

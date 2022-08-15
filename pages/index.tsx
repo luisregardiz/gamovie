@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import HomePopularMovies from '../components/app/home/popular-movies';
 import HomePopularTVShows from '../components/app/home/popular-tv';
 import Hero from '../components/hero';
+import HeadPage from '../components/layout/head-page';
 import { useSessionId } from '../store/user';
 import { createSession } from '../utils/createSession';
 
@@ -34,11 +35,7 @@ const Home: NextPage = () => {
 
     return (
         <div>
-            <Head>
-                <title>Gamovie</title>
-                <meta name="Gamovie" content="Movie app" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <HeadPage title="Home" />
             <section className="section">
                 <Hero />
                 <div>
